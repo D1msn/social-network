@@ -6,6 +6,7 @@
 }
 body{
     height: 100%;
+    background-color: #2b358c0a;
 }
 
 a {
@@ -26,30 +27,47 @@ a {
 }
 
 .header {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
     display: flex;
     align-items: center;
-    padding: 0 10px;
-    background-color: darkgreen;
+    padding: 5px 5px 5px 265px;
+    background-color: white;
+    border-bottom: 1px solid #0000004a;
+    box-shadow: -1px -2px 6px 0px #000;
 }
 
 .sidebar {
-    flex-grow: 1;
-    background-color: darkgreen;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    z-index: 50;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: -13px 0px 20px 0px #000;
 }
 
 .main {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     flex: 1 1 auto;
-    background-color: lightgray;
 }
 
 .content{
-    flex-grow: 10;
+    width: calc(100vw - 250px);
+    margin-top: 60px;
 }
 
 .logo{
-    width: 80px;
+    width: 50px;
 }
 
 .logo__img{
@@ -60,10 +78,23 @@ a {
 
 .content__banner img{
     height: 250px;
-    width: calc(100% - 10px);
+    width: 100%;
 }
 
 .content__profile-info{
     display: flex;
     justify-content: space-between;
+}
+
+.content__banner{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.content__profile-info{
+    padding: 0px 40px;
+}
+
+.content__post-block{
+    padding: 0px 40px;
 }
