@@ -1,11 +1,13 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
+
+import './Footer.scss';
 
 
 const Footer = () => {
 
   return (
 	  <footer className={"footer"}>
-		  Copyright 2021
+		  Developed by d1ms
 	  </footer>
   );
 };

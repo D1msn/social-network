@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
-interface OwnProps {}
+import './Header.scss';
 
-type Props = OwnProps;
 
-const Header: FunctionComponent<Props> = (props) => {
+
+const Header = () => {
 
   return (
 	  <header className={"header"}>

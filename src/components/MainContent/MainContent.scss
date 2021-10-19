@@ -1,0 +1,22 @@
+.content {
+    width: calc(100vw - 265px);
+    margin-top: 60px;
+    &__banner img {
+        height: 250px;
+        width: 100%;
+    }
+    &__profile-info {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__banner {
+        display: flex;
+        margin-bottom: 20px;
+    }
+    &__profile-info {
+        padding: 0px 40px;
+    }
+    &__post-block {
+        padding: 0px 40px;
+    }
+}
