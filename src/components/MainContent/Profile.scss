@@ -1,0 +1,11 @@
+@import '../../variables.scss';
+
+
+.profile__banner {
+  display: flex;
+  margin-bottom: 20px;
+  img {
+    height: 250px;
+    width: 100%;
+  }
+}

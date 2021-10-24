@@ -1,12 +1,12 @@
 import React from 'react';
 
-import './Profile.scss';
+import './ProfileInfo.scss';
 
 
-const Profile = () => {
+const ProfileInfo = () => {
 
   return (
-	  <div className={"profile-info content__profile-info"}>
+	  <div className={"profile-info"}>
 		  <div className={"profile-info__avatar"}>
 			  <img src={""} alt={"AVATAR"}/>
 		  </div>
@@ -17,4 +17,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileInfo;
