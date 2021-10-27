@@ -1,0 +1,41 @@
+.dialogs-wrapper {
+  height: calc(100vh - 150px);
+  overflow: auto;
+  //width: 100%;
+  padding: 20px 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  margin: 20px 40px;
+  border-radius: 7px;
+
+}
+
+.dialogs {
+  border-right: 2px solid #e9a49e7d;
+  padding-right: 40px;
+  margin-right: 40px;
+  border-radius: 30px;
+
+  &__list {
+  }
+
+  &__item {
+
+    a {
+      display: flex;
+      align-items: center;
+
+      &.active {
+        background-color: gold
+      }
+    }
+
+  }
+}
+
+.messages {
+  &__list {
+
+  }
+}
