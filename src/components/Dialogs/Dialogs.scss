@@ -1,33 +1,46 @@
 .dialogs-wrapper {
-  height: calc(100vh - 150px);
-  overflow: auto;
-  //width: 100%;
-  padding: 20px 40px;
+  height: calc(100vh - 120px);
   display: grid;
   grid-template-columns: 1fr 2fr;
-
-  margin: 20px 40px;
+  margin: 30px 50px 20px 40px;
   border-radius: 7px;
+  .ScrollbarsCustom-Thumb{
+    background: #9b4742e0 !important;
+  }
 
 }
 
 .dialogs {
-  border-right: 2px solid #e9a49e7d;
-  padding-right: 40px;
-  margin-right: 40px;
-  border-radius: 30px;
-
+  overflow: auto;
+  //height: calc(100vh - 160px);
+  border-right: 10px solid #e9a49e7d;
+  //margin-right: 40px;
+  border-radius: 40px;
+  box-shadow: 0px 3px 20px 0px #f0dedf, inset 0px 0px 7px 0px #9f55523d;
   &__list {
+    padding: 30px 50px 30px 30px;
   }
 
   &__item {
 
+
+    &:not(:last-child){
+      margin-bottom: 10px;
+    }
+
     a {
+      color: #1d2040;
+      padding: 20px;
+      border-bottom: 1px solid #efcecc;
+      border-radius: 15px;
       display: flex;
       align-items: center;
+      transition: 0.3s all ease;
 
       &.active {
-        background-color: gold
+        box-shadow: 2px 2px 0px 2px #efcecc;
+        background-color: #cb342821;
+        color: #cd1313;
       }
     }
 
@@ -35,7 +48,40 @@
 }
 
 .messages {
+  overflow: auto;
+  //height: calc(100vh - 160px);
+  border-left: 3px solid #e9a49e7d;
+  border-right: 3px solid #e9a49e7d;
+  border-radius: 40px;
+  box-shadow: 0px 0px 4px 1px #f0dedf;
   &__list {
+    padding: 40px 40px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 
+  &__item{
+    align-self: flex-end;
+    width: 40%;
+    padding: 20px;
+    box-shadow: inset 3px -4px 0px 1px #efc6c3;
+    background-color: #d5aeab54;
+    border-radius: 30px;
+    border-top-right-radius: 3px;
+    color: #000;
+
+    &:not(:last-child){
+      margin-bottom: 10px;
+    }
+
+    &.notMy{
+      background-color: #9b4742e0;
+      box-shadow: inset 3px -4px 0px 1px #891914;
+      align-self: flex-start;
+      color: #fff;
+      border-bottom-left-radius: 3px;
+      border-top-right-radius: 30px;
+    }
   }
 }
