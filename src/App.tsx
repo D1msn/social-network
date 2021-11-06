@@ -6,18 +6,24 @@ import Profile from "./components/Profile/Profile";
 import SideBar from "./components/SideBar/SideBar";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
+import {StateType} from "./redux/stateTypes";
 
-function App() {
+type AppTypes = {
+	State: StateType
+}
+
+
+const App: React.FC<AppTypes> = ({State}) => {
 	return (
 		<BrowserRouter>
 			<div className="App">
 				<div className={"app-wrapper"}>
-					<SideBar/>
+					<SideBar state={State.sideBar}/>
 					<Header/>
 					<div className={"main"}>
 						<div className={"main__content"}>
-							<Route path={"/profile"} component={Profile}/>
-							<Route path={"/dialogs"} component={Dialogs}/>
+							<Route path={"/profile"} render={() => <Profile state={State.profilePage} />}/>
+							<Route path={"/dialogs"} render={() => <Dialogs state={State.dialogsPage} />}/>
 						</div>
 					</div>
 					<Footer/>

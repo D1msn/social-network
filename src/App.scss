@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import './variables.scss';
 
 * {
@@ -9,6 +10,7 @@
 body{
     height: 100%;
     background-color: #2b358c0a;
+    font-family: 'Montserrat', sans-serif;
 }
 
 ul{
@@ -44,6 +46,16 @@ a {
         width: 100%;
         margin-top: 60px;
 
+    }
+}
+
+.profile-avatar {
+    display: flex;
+    align-self: center;
+    img {
+        box-shadow: 0px 0px 0px 3px #9b4742e0;
+        border-radius: 50%;
+        object-fit: cover;
     }
 }
 

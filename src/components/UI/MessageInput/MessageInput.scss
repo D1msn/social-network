@@ -1,0 +1,64 @@
+.message-input-block{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__wrapper{
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__input{
+    font-size: 18px;
+    margin-right: 20px;
+    width: 500px;
+    border-radius: 10px;
+    border: 2px solid #f0dedf;
+    padding: 5px 10px;
+    color: #000;
+    outline: #cd1313;
+    box-shadow: 2px 4px 0px 1px #f0dedf;
+    transition: 0.3s all ease;
+
+    &:focus{
+      border: 2px solid #ebc2c4;
+    }
+
+  }
+
+  &__send-btn{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    transition: 0.3s all ease;
+
+    svg{
+      width: 32px;
+      height: 32px;
+
+      path{
+      transition: 0.3s all ease;
+        fill: #ebdfe0;
+        stroke: #b77d7b;
+        stroke-width: 2px;
+      }
+    }
+
+    &:hover{
+      svg{
+        path{
+          fill: #b77d7b;
+          stroke: #b77d7b;
+        }
+      }
+    }
+
+    &:active{
+      transform: scale(0.8);
+    }
+  }
+}

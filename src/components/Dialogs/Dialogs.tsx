@@ -1,50 +1,30 @@
 import React from 'react';
-import DialogsItem from "./DialogsItem";
-
-import './Dialogs.scss';
-import MessagesItem from "./MessagesItem";
 import Scrollbar from "react-scrollbars-custom";
+import DialogsItem from "./DialogsItem";
+import MessagesItem from "./MessagesItem";
 
-const Dialogs = () => {
+import {DialogsPageType} from "../../redux/stateTypes";
+import './Dialogs.scss';
+import MessageInput from "../UI/MessageInput/MessageInput";
 
+type DialogsPropsType = {
+	state: DialogsPageType
+}
+
+const Dialogs: React.FC<DialogsPropsType> = ({state}) => {
 	return (
 		<div className="dialogs-wrapper">
-			<Scrollbar className={"dialogs"} style={{ width: "90%"}} >
-					<ul className="dialogs__list">
-						<DialogsItem id={"1"} name={"Дима"}/>
-						<DialogsItem id={"2"} name={"Олег"}/>
-						<DialogsItem id={"3"} name={"Гена"}/>
-						<DialogsItem id={"4"} name={"Игорь"}/>
-						<DialogsItem id={"4"} name={"Игорь"}/>
-						<DialogsItem id={"4"} name={"Игорь"}/>
-						<DialogsItem id={"4"} name={"Игорь"}/>
-						<DialogsItem id={"4"} name={"Игорь"}/>
-						<DialogsItem id={"4"} name={"Игорь"}/>
-						<DialogsItem id={"4"} name={"Игорь"}/>
-						<DialogsItem id={"4"} name={"Игорь"}/>
-						<DialogsItem id={"4"} name={"Игорь"}/>
-						<DialogsItem id={"4"} name={"Игорь"}/>
-					</ul>
+			<Scrollbar className={"dialogs"} style={{width: "90%"}}>
+				<ul className="dialogs__list">
+					{state.dialogsList.map((d) => (<DialogsItem id={d.id} name={d.name} avatar={d.avatar}/>))}
+				</ul>
 			</Scrollbar>
 
 			<Scrollbar className="messages">
-					<ul className="messages__list">
-						<MessagesItem message={"первое"} notMy/>
-						<MessagesItem message={"How Are you"}/>
-						<MessagesItem message={"How Are you"}/>
-						<MessagesItem message={"How Are you"}/>
-						<MessagesItem message={"Yo"} notMy/>
-						<MessagesItem message={"Yo"} notMy/>
-						<MessagesItem message={"Yo"} notMy/>
-						<MessagesItem message={"Yo"}/>
-						<MessagesItem message={"Yo"}/>
-						<MessagesItem message={"Yo"} notMy/>
-						<MessagesItem message={"Yo"}/>
-						<MessagesItem message={"Yo"}/>
-						<MessagesItem message={"не мое"} notMy/>
-						<MessagesItem message={"Yo"}/>
-						<MessagesItem message={"последнее мое"}/>
-					</ul>
+				<ul className="messages__list">
+					{state.messagesList.map((m) => <MessagesItem id={m.id} message={m.message} notMy={m.notMy}/>)}
+				</ul>
+				<MessageInput className={"messages__create"}/>
 			</Scrollbar>
 
 		</div>

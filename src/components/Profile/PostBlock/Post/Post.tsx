@@ -2,10 +2,16 @@ import React from 'react';
 
 import './Post.scss';
 
-const Post = () => {
+type PropsType = {
+	id: string
+	message: string
+	likesCount: number
+}
+
+const Post = (props: PropsType) => {
 
   return (
-	  <li className="post-block__item">Hello</li>
+	  <li id={props.id} className="post-block__item">{props.message} Лайков: {props.likesCount}</li>
   );
 };
 

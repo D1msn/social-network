@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {ReactSVG} from "react-svg";
+import FriendsBlock from "./FriendsBlock/FriendsBlock";
 
 
 import profileIcon from '../../images/user_24.svg'
@@ -8,16 +9,18 @@ import messagesIcon from '../../images/chating_24.svg'
 import newsIcon from '../../images/choose_type-public.svg'
 import musicIcon from '../../images/volume-up.svg'
 import settingsIcon from '../../images/settings_24.svg'
-
 import sidebarAvatar from '../../images/ava.jpg'
+import {SideBarType} from "../../redux/stateTypes";
 
 import './SideBar.scss';
 
-const SideBar = () => {
+type SideBarPropsTypes = {
+	state: SideBarType
+}
+
+const SideBar: React.FC<SideBarPropsTypes> = ( {state} ) => {
 
 	return (
-
-
 		<nav className="sidebar ">
 			<div className="sidebar__avatar">
 				<NavLink to="/profile">
@@ -55,6 +58,7 @@ const SideBar = () => {
 					</NavLink>
 				</li>
 			</ul>
+			<FriendsBlock friends={state.friendsList}/>
 		</nav>
 
 

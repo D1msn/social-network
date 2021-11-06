@@ -1,0 +1,21 @@
+.friends-block{
+  flex-grow: 1;
+  width: 100%;
+  &__title{
+    font-weight: 400;
+    font-size: 33px;
+    margin-bottom: 5px;
+    color: #3e405c;
+  }
+  &__list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__item{
+    cursor: pointer;
+    &:not(:last-child){
+      margin-right: 15px;
+  }
+  }
+}

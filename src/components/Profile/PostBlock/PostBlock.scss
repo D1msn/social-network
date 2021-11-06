@@ -1,3 +1,9 @@
 .post-block {
   padding: 0 40px;
+
+  &__create{
+    .message-input-block{
+      position: relative;
+    }
+  }
 }
