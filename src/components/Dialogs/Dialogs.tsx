@@ -5,7 +5,7 @@ import MessagesItem from "./MessagesItem";
 
 import {DialogsPageType} from "../../redux/stateTypes";
 import './Dialogs.scss';
-import MessageInput from "../UI/MessageInput/MessageInput";
+import MessageInputBlock from "../UI/MessageInput/MessageInputBlock";
 
 type DialogsPropsType = {
 	state: DialogsPageType
@@ -22,9 +22,9 @@ const Dialogs: React.FC<DialogsPropsType> = ({state}) => {
 
 			<Scrollbar className="messages">
 				<ul className="messages__list">
-					{state.messagesList.map((m) => <MessagesItem id={m.id} message={m.message} notMy={m.notMy}/>)}
+					{state.messagesList.map((m) => <MessagesItem key={m.id} message={m.message} notMy={m.notMy}/>)}
 				</ul>
-				<MessageInput className={"messages__create"}/>
+				<MessageInputBlock onClick={() => {}} className={"messages__create"}/>
 			</Scrollbar>
 
 		</div>

@@ -1,7 +1,7 @@
 .dialogs-wrapper {
-  height: calc(100vh - 120px);
+  height: 69vh;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   margin: 30px 50px 20px 40px;
   border-radius: 7px;
 
@@ -25,7 +25,7 @@
 
   &__item {
     .profile-avatar{
-      margin-right: 25px;
+      margin-right: 15px;
     }
 
     &:not(:last-child) {
@@ -36,7 +36,7 @@
   &__link {
     cursor: pointer;
     color: #1d2040;
-    padding: 20px 30px;
+    padding: 10px 15px;
     border: 1px solid #efcecc;
     box-shadow: 2px 2px 0px 2px #efcecc;
     border-radius: 15px;
@@ -64,9 +64,10 @@
   border-radius: 40px;
   box-shadow: 0px 0px 4px 1px #f0dedf;
 
+
   &__create{
     padding: 20px 0;
-    width: 1046px;
+    width: 1037px;
     background-color: #f6f7fa;
     position: fixed;
     top: auto;
@@ -81,7 +82,7 @@
   }
 
   &__list {
-    padding: 40px 40px 100px 40px;
+    padding: 20px 20px 50px 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -95,12 +96,12 @@
     flex-direction: row-reverse;
 
     &:not(:last-child) {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .profile-avatar{
       align-self: flex-start;
-      margin-top: -20px;
+      margin-top: -8px;
     }
 
     &.notMy {
@@ -122,7 +123,7 @@
 
       .profile-avatar{
         align-self: flex-end;
-        margin-bottom: -20px;
+        margin-bottom: -15px;
       }
     }
 
@@ -132,16 +133,15 @@
       justify-content: end;
       flex-direction: row-reverse;
       align-items: center;
-      margin-bottom: 5px;
-      padding: 0 18px;
+      padding: 0 6px;
       line-height: 20px;
     }
     &-time{
-      font-size: 16px;
+      font-size: 13px;
       color: #a65c589c;
     }
     &-name{
-      font-size: 20px;
+      font-size: 15px;
       margin: 0 10px;
       font-weight: 500;
       color: #a65c58;
@@ -149,7 +149,7 @@
   }
 
   &__text {
-    margin: 0 20px;
+    margin: 0 15px;
     min-width: 150px;
     padding: 10px 20px;
     box-shadow: inset 3px -4px 0px 1px #efc6c3;

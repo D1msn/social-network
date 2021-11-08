@@ -1,4 +1,5 @@
-import { StateType } from "./stateTypes";
+import {MyPostType, StateType} from "./stateTypes";
+import style from "react-scrollbars-custom/dist/types/style";
 
 export const State: StateType  = {
 	profilePage: {
@@ -41,5 +42,11 @@ export const State: StateType  = {
 			{id: "3", name: "Олег", avatar: "http://lorempixel.com/450/450/"},
 		]
 	}
+}
+
+export const addPost = (message:string) =>{
+	let newPost: MyPostType = {id: "8", postMessage: message, likesCount: 0}
+	State.profilePage.myPostsList.push(newPost)
+	console.log(newPost)
 }
 

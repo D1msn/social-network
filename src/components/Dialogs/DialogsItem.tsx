@@ -16,7 +16,7 @@ const DialogsItem = (props: PropsType) => {
 
 		<li className="dialogs__item">
 			<NavLink to={`/dialogs/${props.id}`} className={"dialogs__link"}>
-				<ProfileAvatar avatar={props.avatar} />
+				<ProfileAvatar avatar={props.avatar}/>
 				{props.name}
 			</NavLink>
 		</li>

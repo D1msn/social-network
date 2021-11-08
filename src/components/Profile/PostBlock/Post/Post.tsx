@@ -3,7 +3,6 @@ import React from 'react';
 import './Post.scss';
 
 type PropsType = {
-	id: string
 	message: string
 	likesCount: number
 }
@@ -11,7 +10,7 @@ type PropsType = {
 const Post = (props: PropsType) => {
 
   return (
-	  <li id={props.id} className="post-block__item">{props.message} Лайков: {props.likesCount}</li>
+	  <li className="post-block__item">{props.message} Лайков: {props.likesCount}</li>
   );
 };
 

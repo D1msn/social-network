@@ -7,7 +7,7 @@ type ProfileAvatarPropsType = {
 	avatar?: string
 }
 
-const ProfileAvatar: React.FC<ProfileAvatarPropsType> = ({style, height = 60, width = 60, avatar = "https://via.placeholder.com/150"}) => {
+const ProfileAvatar: React.FC<ProfileAvatarPropsType> = ({style, height = 36, width = 36, avatar = "https://via.placeholder.com/150"}) => {
 	const imgStyles = Object.assign({
 		width: width,
 		height: height
