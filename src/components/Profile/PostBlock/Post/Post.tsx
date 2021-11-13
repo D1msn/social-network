@@ -10,7 +10,9 @@ type PropsType = {
 const Post = (props: PropsType) => {
 
   return (
-	  <li className="post-block__item">{props.message} Лайков: {props.likesCount}</li>
+	  <li className="post-block__item">
+		  <div className="post-block__item-text" dangerouslySetInnerHTML={{__html: props.message}}/>
+		   Лайков: {props.likesCount}</li>
   );
 };
 

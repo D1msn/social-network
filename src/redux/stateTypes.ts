@@ -27,6 +27,7 @@ export type FriendType = {
 
 export type ProfilePageType = {
 	myPostsList: MyPostsListType
+	newPostText: string
 }
 export type DialogsPageType = {
 	messagesList: MessagesListType

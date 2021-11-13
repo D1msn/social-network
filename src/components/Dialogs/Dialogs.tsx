@@ -24,7 +24,7 @@ const Dialogs: React.FC<DialogsPropsType> = ({state}) => {
 				<ul className="messages__list">
 					{state.messagesList.map((m) => <MessagesItem key={m.id} message={m.message} notMy={m.notMy}/>)}
 				</ul>
-				<MessageInputBlock onClick={() => {}} className={"messages__create"}/>
+				<MessageInputBlock onAltEnter={() => {}} newText={"asd"} changeNewPostText={() => {}} onClick={() => {}} className={"messages__create"}/>
 			</Scrollbar>
 
 		</div>

@@ -1,5 +1,5 @@
 import {MyPostType, StateType} from "./stateTypes";
-import style from "react-scrollbars-custom/dist/types/style";
+import {rerenderAppTree} from "../rerender";
 
 export const State: StateType  = {
 	profilePage: {
@@ -11,7 +11,8 @@ export const State: StateType  = {
 			{id: "5", postMessage: "не мое сообщение", likesCount: 1},
 			{id: "6", postMessage: "не мое", likesCount: 22},
 			{id: "7", postMessage: "последнее мое", likesCount: 1111},
-		]
+		],
+		newPostText: '',
 	},
 
 	dialogsPage: {
@@ -44,9 +45,15 @@ export const State: StateType  = {
 	}
 }
 
-export const addPost = (message:string) =>{
-	let newPost: MyPostType = {id: "8", postMessage: message, likesCount: 0}
+export const addPost = () =>{
+	let newPost: MyPostType = {id: "8", postMessage: State.profilePage.newPostText, likesCount: 0}
 	State.profilePage.myPostsList.push(newPost)
-	console.log(newPost)
+	State.profilePage.newPostText = ''
+	rerenderAppTree(State)
+}
+
+export const changeNewPostText = (text: string) => {
+	console.log(text)
+	State.profilePage.newPostText = text
 }
 

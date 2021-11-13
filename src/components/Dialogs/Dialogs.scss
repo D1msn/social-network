@@ -66,19 +66,15 @@
 
 
   &__create{
-    padding: 20px 0;
-    width: 1037px;
-    background-color: #f6f7fa;
     position: fixed;
     top: auto;
-    bottom: 30px;
-    left: 820px;
+    bottom: 7%;
+    left: 50%;
+    padding: 20px;
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    border-top: 1px solid #efcecc;
   }
 
   &__list {

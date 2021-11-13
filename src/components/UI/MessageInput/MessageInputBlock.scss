@@ -9,6 +9,9 @@
   }
 
   &__input{
+    overflow: auto;
+    max-height: 500px;
+    background: #fff;
     font-size: 18px;
     margin-right: 20px;
     width: 500px;
