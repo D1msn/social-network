@@ -1,22 +1,23 @@
 import React from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
-import {StateType} from "./redux/stateTypes";
+import {StateType, StoreType} from "./redux/stateTypes";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Profile from "./components/Profile/Profile";
 import SideBar from "./components/SideBar/SideBar";
 import Dialogs from "./components/Dialogs/Dialogs";
-import {addPost, changeNewPostText} from "./redux/state";
 
 import './App.scss';
 
 
 type AppTypes = {
-	State: StateType
+	Store: StoreType
 }
 
 
-const App: React.FC<AppTypes> = ({State}) => {
+const App: React.FC<AppTypes> = ({Store}) => {
+	const State = Store.getState()
+
 	return (
 		<BrowserRouter>
 			<div className="App">
@@ -25,7 +26,7 @@ const App: React.FC<AppTypes> = ({State}) => {
 					<Header/>
 					<div className={"main"}>
 						<div className={"main__content"}>
-							<Route path={"/profile"} render={() => <Profile state={State.profilePage} addPost={addPost} changeNewPostText={changeNewPostText} />}/>
+							<Route path={"/profile"} render={() => <Profile state={State.profilePage} addPost={Store.addPost.bind(Store)} changeNewPostText={Store.changeNewPostText.bind(Store)} />}/>
 							<Route path={"/dialogs"} render={() => <Dialogs state={State.dialogsPage} />}/>
 						</div>
 					</div>

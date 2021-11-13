@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {State} from './redux/state'
-import {rerenderAppTree} from "./rerender";
-//
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App State={State}/>
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
+import {Store} from "./redux/state";
 
-rerenderAppTree(State)
+
+export const rerenderAppTree = () => {
+	ReactDOM.render(
+		<App Store={Store}/>,
+		document.getElementById('root')
+	);
+}
+rerenderAppTree()
+
+Store.subscribe(rerenderAppTree);
 

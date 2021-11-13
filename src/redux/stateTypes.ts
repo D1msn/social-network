@@ -1,3 +1,12 @@
+export type StoreType = {
+	_state: StateType
+	_callSubscriber: () => void
+	subscribe: (observer: () => void) => void
+	getState: () => StateType
+	addPost: () => void
+	changeNewPostText: (text: string) => void
+}
+
 export type StateType = {
 	profilePage: ProfilePageType
 	dialogsPage: DialogsPageType
