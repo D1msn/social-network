@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
-import {StateType, StoreType} from "./redux/stateTypes";
+import {ActionsTypes, StateType, StoreType} from "./redux/stateTypes";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Profile from "./components/Profile/Profile";
@@ -12,10 +12,11 @@ import './App.scss';
 
 type AppTypes = {
 	Store: StoreType
+	dispatch: (action: ActionsTypes) => void
 }
 
 
-const App: React.FC<AppTypes> = ({Store}) => {
+const App: React.FC<AppTypes> = ({Store,dispatch}) => {
 	const State = Store.getState()
 
 	return (
@@ -26,8 +27,8 @@ const App: React.FC<AppTypes> = ({Store}) => {
 					<Header/>
 					<div className={"main"}>
 						<div className={"main__content"}>
-							<Route path={"/profile"} render={() => <Profile state={State.profilePage} addPost={Store.addPost.bind(Store)} changeNewPostText={Store.changeNewPostText.bind(Store)} />}/>
-							<Route path={"/dialogs"} render={() => <Dialogs state={State.dialogsPage} />}/>
+							<Route path={"/profile"} render={() => <Profile state={State.profilePage} dispatch={dispatch} />}/>
+							<Route path={"/dialogs"} render={() => <Dialogs state={State.dialogsPage} dispatch={dispatch} />}/>
 						</div>
 					</div>
 					<Footer/>

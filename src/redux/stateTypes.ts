@@ -1,11 +1,24 @@
+import {
+	addMessageActionCreator,
+	addPostActionCreator,
+	changeNewMessageActionCreator,
+	changeNewPostActionCreator
+} from "./state";
+
 export type StoreType = {
 	_state: StateType
 	_callSubscriber: () => void
 	subscribe: (observer: () => void) => void
 	getState: () => StateType
-	addPost: () => void
-	changeNewPostText: (text: string) => void
+	dispatch: (action: ActionsTypes) => void
 }
+
+export type ActionsTypes =
+	ReturnType<typeof addPostActionCreator>
+	| ReturnType<typeof addMessageActionCreator>
+	| ReturnType<typeof changeNewPostActionCreator>
+	| ReturnType<typeof changeNewMessageActionCreator>
+
 
 export type StateType = {
 	profilePage: ProfilePageType
@@ -41,6 +54,7 @@ export type ProfilePageType = {
 export type DialogsPageType = {
 	messagesList: MessagesListType
 	dialogsList: DialogsListType
+	newMessagesText: string
 }
 export type SideBarType = {
 	friendsList: FriendsListType

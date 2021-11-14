@@ -26,9 +26,7 @@ const MessagesItem = (props: PropsType) => {
 						22:00
 					</span>
 				</div>
-				<p className="messages__text">
-					{props.message}
-				</p>
+				<p className="messages__text" dangerouslySetInnerHTML={{__html: props.message}} />
 			</div>
 
 		</li>

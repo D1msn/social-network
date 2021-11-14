@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {ActionsTypes} from "../../../redux/stateTypes";
 import MyInput from "../MyInput";
+import {changeNewPostActionCreator} from "../../../redux/state";
 
 import './MessageInputBlock.scss';
 
@@ -8,15 +10,15 @@ type MessageInputPropsType = {
 	onAltEnter: () => void
 	className?: string
 	newText: string
-	changeNewPostText: (text: string) => void
+	changeTextCallBack: (value: string) => void
 }
 
-const MessageInputBlock: React.FC<MessageInputPropsType> = ({className, onClick, onAltEnter,newText ,...props}) => {
+const MessageInputBlock: React.FC<MessageInputPropsType> = ({className, onClick, onAltEnter, newText, ...props}) => {
 
 	return (
 		<div className={`message-input-block ${className}`}>
 			<div className="message-input-block__wrapper">
-				<MyInput onAltEnter={onAltEnter} onChangeInput={props.changeNewPostText} text={newText} />
+				<MyInput onAltEnter={onAltEnter} changeTextCallBack={props.changeTextCallBack} text={newText}/>
 				<button className="message-input-block__send-btn" onClick={onClick}>
 					<svg width="24" height="26" viewBox="0 0 24 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path fillRule="evenodd" clipRule="evenodd"

@@ -6,14 +6,14 @@ import ContentEditable, {ContentEditableEvent} from "react-contenteditable";
 type MyInput = {
 	className?: string
 	onAltEnter: () => void
-	onChangeInput: (value:string) => void
+	changeTextCallBack: (value: string) => void
 	text: string
 }
 
-const MyInput: React.FC<MyInput> = ({className, onAltEnter, text, onChangeInput}) => {
+const MyInput: React.FC<MyInput> = ({className, onAltEnter, text, changeTextCallBack}) => {
 
 	const onChangeHandler = (e: ContentEditableEvent) =>{
-		onChangeInput(e.target.value)
+		changeTextCallBack(e.target.value)
 	}
 
 	const onEnterCallback = (e: KeyboardEvent<HTMLDivElement>) => {

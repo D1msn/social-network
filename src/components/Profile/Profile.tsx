@@ -1,17 +1,16 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import PostBLock from "./PostBlock/PostBlock";
-import {ProfilePageType} from "../../redux/stateTypes";
+import {ActionsTypes, ProfilePageType} from "../../redux/stateTypes";
 
 import './Profile.scss'
 
 type ProfilePropsTypes = {
 	state: ProfilePageType
-	addPost: () => void
-	changeNewPostText: (text: string) => void
+	dispatch: (action: ActionsTypes) => void
 }
 
-const Profile: React.FC<ProfilePropsTypes> = ({state,addPost, changeNewPostText}) => {
+const Profile: React.FC<ProfilePropsTypes> = ({state,dispatch}) => {
 
 	return (
 		<div className={"profile"}>
@@ -20,7 +19,7 @@ const Profile: React.FC<ProfilePropsTypes> = ({state,addPost, changeNewPostText}
 					src={"https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"}/>
 			</div>
 			<ProfileInfo/>
-			<PostBLock  myPostsList={state.myPostsList} newTextPost={state.newPostText} addPost={addPost} changeNewPostText={changeNewPostText}/>
+			<PostBLock  myPostsList={state.myPostsList} newTextPost={state.newPostText} dispatch={dispatch}/>
 		</div>
 
 
