@@ -12,6 +12,10 @@
   background-color: #fff;
   box-shadow: -13px 0px 20px 0px #000;
 
+  &__item:not(:last-child){
+
+  }
+
   &__avatar {
     width: 120px;
     margin-bottom: 40px;
@@ -31,11 +35,13 @@
 
 
   &__links {
+    width: 100%;
     list-style: none;
     flex-grow: 1;
   }
 
   &__link {
+    font-size: 24px;
     display: flex;
     align-items: center;
     color: #1d2040;
@@ -61,7 +67,7 @@
   }
 
   &__item-icon {
-    margin-right: 6px;
+    margin-right: 9px;
 
     div {
       display: flex;

@@ -1,9 +1,6 @@
-import {
-	addMessageActionCreator,
-	addPostActionCreator,
-	changeNewMessageActionCreator,
-	changeNewPostActionCreator
-} from "./state";
+import {addPostActionCreator, changeNewPostActionCreator} from "./profile-reducer";
+import {addMessageActionCreator, changeNewMessageActionCreator} from "./dialogs-reducer";
+
 
 export type StoreType = {
 	_state: StateType

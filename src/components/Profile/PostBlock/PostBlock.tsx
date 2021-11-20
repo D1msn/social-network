@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from "./Post/Post";
 import {ActionsTypes, MyPostsListType} from "../../../redux/stateTypes";
-import {addPostActionCreator, changeNewPostActionCreator} from "../../../redux/state";
+import {addPostActionCreator, changeNewPostActionCreator} from "../../../redux/profile-reducer";
 
 
 import './PostBlock.scss';

@@ -11,24 +11,23 @@ import './App.scss';
 
 
 type AppTypes = {
-	Store: StoreType
+	state: any
+	Store: any
 	dispatch: (action: ActionsTypes) => void
 }
 
 
-const App: React.FC<AppTypes> = ({Store,dispatch}) => {
-	const State = Store.getState()
-
+const App: React.FC<AppTypes> = ({Store,dispatch, state}) => {
 	return (
 		<BrowserRouter>
 			<div className="App">
 				<div className={"app-wrapper"}>
-					<SideBar state={State.sideBar}/>
+					<SideBar state={state.sideBar}/>
 					<Header/>
 					<div className={"main"}>
 						<div className={"main__content"}>
-							<Route path={"/profile"} render={() => <Profile state={State.profilePage} dispatch={dispatch} />}/>
-							<Route path={"/dialogs"} render={() => <Dialogs state={State.dialogsPage} dispatch={dispatch} />}/>
+							<Route path={"/profile"} render={() => <Profile state={state.profilePage} dispatch={dispatch} />}/>
+							<Route path={"/dialogs"} render={() => <Dialogs state={state.dialogsPage} dispatch={dispatch} />}/>
 						</div>
 					</div>
 					<Footer/>

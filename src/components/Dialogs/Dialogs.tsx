@@ -6,7 +6,7 @@ import MessagesItem from "./MessagesItem";
 import {ActionsTypes, DialogsPageType} from "../../redux/stateTypes";
 import './Dialogs.scss';
 import MessageInputBlock from "../UI/MessageInput/MessageInputBlock";
-import {addMessageActionCreator, changeNewMessageActionCreator} from "../../redux/state";
+import {addMessageActionCreator, changeNewMessageActionCreator} from "../../redux/dialogs-reducer";
 
 type DialogsPropsType = {
 	state: DialogsPageType

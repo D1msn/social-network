@@ -1,7 +1,7 @@
 import React from 'react';
 import {ActionsTypes} from "../../../redux/stateTypes";
 import MyInput from "../MyInput";
-import {changeNewPostActionCreator} from "../../../redux/state";
+import {changeNewPostActionCreator} from "../../../redux/profile-reducer";
 
 import './MessageInputBlock.scss';
 

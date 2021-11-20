@@ -1,9 +1,6 @@
 import {ActionsTypes, MessageType, MyPostType, StoreType} from "./stateTypes";
-
-export const ADD_POST = "ADD-POST";
-export const ADD_MESSAGE = "ADD-MESSAGE";
-export const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";
-export const CHANGE_NEW_MESSAGE_TEXT = "CHANGE-NEW-MESSAGE-TEXT";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
 
 export const Store: StoreType = {
 	_state: {
@@ -62,38 +59,13 @@ export const Store: StoreType = {
 		return this._state
 	},
 	dispatch(action: ActionsTypes){
-		if(action.type === ADD_POST){
-			if (this._state.profilePage.newPostText.length > 0) {
-				let newPost: MyPostType = {id: "8", postMessage: this._state.profilePage.newPostText, likesCount: 0}
-				this._state.profilePage.myPostsList.push(newPost)
-				this._state.profilePage.newPostText = ''
-				this._callSubscriber()
-			}
-		} else if (action.type === CHANGE_NEW_POST_TEXT){
+		this._state.profilePage = profileReducer(this._state.profilePage, action);
+		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+		this._callSubscriber()
 
-			this._state.profilePage.newPostText = action.newText;
-			this._callSubscriber();
-
-		}  else if (action.type === ADD_MESSAGE){
-			if (this._state.dialogsPage.newMessagesText.length > 0) {
-				let newMessage: MessageType = {id: "5", message: this._state.dialogsPage.newMessagesText, notMy: false};
-				this._state.dialogsPage.messagesList.push(newMessage)
-				this._state.dialogsPage.newMessagesText = ''
-				this._callSubscriber()
-			}
-		}else if (action.type === CHANGE_NEW_MESSAGE_TEXT){
-
-			this._state.dialogsPage.newMessagesText = action.newMessageText;
-			this._callSubscriber();
-
-		}
 	}
 
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST} as const)
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE} as const)
-export const changeNewPostActionCreator = (newText: string) => ({type: CHANGE_NEW_POST_TEXT, newText } as const)
-export const changeNewMessageActionCreator = (newMessageText: string) => ({type: CHANGE_NEW_MESSAGE_TEXT, newMessageText } as const)
 
 
