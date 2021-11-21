@@ -2,23 +2,21 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {ReactSVG} from "react-svg";
 import FriendsBlock from "./FriendsBlock/FriendsBlock";
-
-
 import profileIcon from '../../images/user_24.svg'
 import messagesIcon from '../../images/chating_24.svg'
 import newsIcon from '../../images/choose_type-public.svg'
 import musicIcon from '../../images/volume-up.svg'
 import settingsIcon from '../../images/settings_24.svg'
 import sidebarAvatar from '../../images/ava.jpg'
-import {SideBarType} from "../../redux/stateTypes";
 
 import './SideBar.scss';
+import {StoreContext} from '../../StoreContext';
 
 type SideBarPropsTypes = {
-	state: SideBarType
+	// state: SideBarType
 }
 
-const SideBar: React.FC<SideBarPropsTypes> = ( {state} ) => {
+const SideBar: React.FC<SideBarPropsTypes> = (props) => {
 
 	return (
 		<nav className="sidebar ">
@@ -58,12 +56,16 @@ const SideBar: React.FC<SideBarPropsTypes> = ( {state} ) => {
 					</NavLink>
 				</li>
 			</ul>
-			<FriendsBlock friends={state.friendsList}/>
+
+			<StoreContext.Consumer children={
+				(store) => {
+					return (
+						<FriendsBlock friends={store.getState().sideBar.friendsList}/>
+					)
+				}
+			}/>
 		</nav>
-
-
-	)
-		;
+	);
 };
 
 export default SideBar;

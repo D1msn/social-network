@@ -9,26 +9,18 @@ import MessageInputBlock from "../../UI/MessageInput/MessageInputBlock";
 
 
 type PostBlockPropsTypes = {
+	addPost: () => void
+	changeTextAction: (text: string) => void
 	myPostsList: MyPostsListType
 	newTextPost: string
-	dispatch: (action: ActionsTypes) => void
 }
 
 const PostBLock: React.FC<PostBlockPropsTypes> = ({myPostsList, newTextPost, ...props}) => {
-
-	const addPost = () => {
-		props.dispatch(addPostActionCreator())
-	}
-
-	const changeTextAction = (text: string) => {
-		props.dispatch(changeNewPostActionCreator(text))
-	}
-
   return (
 	  <div className={"post-block"}>
 		  <h2 className={"post-block__title"}>My posts</h2>
 		  <div className={"post-block__create"}>
-			  <MessageInputBlock onAltEnter={addPost} changeTextCallBack={changeTextAction} newText={newTextPost} onClick={addPost}/>
+			  <MessageInputBlock onAltEnter={props.addPost} changeTextCallBack={props.changeTextAction} newText={newTextPost} onClick={props.addPost}/>
 		  </div>
 		  <ul className={"post-block__list"}>
 			  {myPostsList.map((p) => <Post key={p.id} message={p.postMessage} likesCount={p.likesCount}/>)}

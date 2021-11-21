@@ -1,19 +1,22 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import Scrollbar from "react-scrollbars-custom";
 import DialogsItem from "./DialogsItem";
 import MessagesItem from "./MessagesItem";
 
-import {ActionsTypes, DialogsPageType} from "../../redux/stateTypes";
+import {DialogsListType, MessagesListType} from "../../redux/stateTypes";
 import './Dialogs.scss';
 import MessageInputBlock from "../UI/MessageInput/MessageInputBlock";
-import {addMessageActionCreator, changeNewMessageActionCreator} from "../../redux/dialogs-reducer";
+import {addMessageActionCreator} from "../../redux/dialogs-reducer";
 
 type DialogsPropsType = {
-	state: DialogsPageType
-	dispatch: (action: ActionsTypes) => void
+	dialogsList: DialogsListType
+	messagesList: MessagesListType
+	newMessagesText: string
+	addNewMessage: () => void
+	changeNewTextMessage: (text: string) => void
 }
 
-const Dialogs: React.FC<DialogsPropsType> = ({state, dispatch}) => {
+const Dialogs: React.FC<DialogsPropsType> = (props) => {
 	const headerHeight = 60;
 	const scrollWidth = 5
 
@@ -53,32 +56,27 @@ const Dialogs: React.FC<DialogsPropsType> = ({state, dispatch}) => {
 
 	}, [messagesBlockCreate?.current?.clientHeight, messagesBlockRef?.current?.holderElement?.clientWidth]);
 
-
-	const changeNewTextMessage = (text: string) => {
-		dispatch(changeNewMessageActionCreator(text))
-	}
-
 	const addNewMessage = () => {
 		setTimeout(() => changeHeight(), 0)
-		dispatch(addMessageActionCreator())
+		props.addNewMessage()
 	}
 
 	return (
 		<div className="dialogs-wrapper">
 			<Scrollbar className={"dialogs"} style={{width: "85%"}}>
 				<ul className="dialogs__list">
-					{state.dialogsList.map((d) => (<DialogsItem id={d.id} name={d.name} avatar={d.avatar}/>))}
+					{props.dialogsList.map((d) => (<DialogsItem id={d.id} name={d.name} avatar={d.avatar}/>))}
 				</ul>
 			</Scrollbar>
 
 			<Scrollbar className="messages" ref={messagesBlockRef} style={{height: messagesBlockHeight}}>
 				<ul className="messages__list" ref={messagesList}>
-					{state.messagesList.map((m) => <MessagesItem key={m.id} message={m.message} notMy={m.notMy}/>)}
+					{props.messagesList.map((m) => <MessagesItem key={m.id} message={m.message} notMy={m.notMy}/>)}
 				</ul>
 				<div className="messages__create" ref={messagesBlockCreate} style={{ width: messagesInputWidth }}>
 					<MessageInputBlock onAltEnter={addNewMessage}
-									   changeTextCallBack={changeNewTextMessage}
-									   newText={state.newMessagesText} onClick={addNewMessage}
+									   changeTextCallBack={props.changeNewTextMessage}
+									   newText={props.newMessagesText} onClick={addNewMessage}
 					/>
 				</div>
 			</Scrollbar>
