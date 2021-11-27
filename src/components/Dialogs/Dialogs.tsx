@@ -2,19 +2,11 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import Scrollbar from "react-scrollbars-custom";
 import DialogsItem from "./DialogsItem";
 import MessagesItem from "./MessagesItem";
-
-import {DialogsListType, MessagesListType} from "../../redux/stateTypes";
-import './Dialogs.scss';
 import MessageInputBlock from "../UI/MessageInput/MessageInputBlock";
-import {addMessageActionCreator} from "../../redux/dialogs-reducer";
+import {DialogsPropsType} from './DialogsContainer';
 
-type DialogsPropsType = {
-	dialogsList: DialogsListType
-	messagesList: MessagesListType
-	newMessagesText: string
-	addNewMessage: () => void
-	changeNewTextMessage: (text: string) => void
-}
+import './Dialogs.scss';
+
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
 	const headerHeight = 60;

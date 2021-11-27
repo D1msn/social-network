@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import PostBLock from "./PostBlock/PostBlock";
-import {ActionsTypes, ProfilePageType, StoreType} from "../../redux/stateTypes";
+import {ActionsTypes, ProfilePageType, StoreType} from "../../redux/storeTypes";
 
 import './Profile.scss'
 import PostBLockContainer from "./PostBlock/PostBlockContainer";

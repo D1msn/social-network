@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActionsTypes} from "../../../redux/stateTypes";
+import {ActionsTypes} from "../../../redux/storeTypes";
 import MyInput from "../MyInput";
 import {changeNewPostActionCreator} from "../../../redux/profile-reducer";
 

@@ -1,12 +1,8 @@
 import React from 'react';
-import {FriendsListType} from "../../../redux/stateTypes";
 import ProfileAvatar from "../../common/ProfileAvatar/ProfileAvatar";
+import {FriendsBlockPropsTypes} from '../SideBar';
 
 import './FriendsBlock.scss'
-
-type FriendsBlockPropsTypes ={
-	friends: FriendsListType
-}
 
 const FriendsBlock: React.FC<FriendsBlockPropsTypes> = ({friends}) => {
 

@@ -1,19 +1,11 @@
 import React from 'react';
 import Post from "./Post/Post";
-import {ActionsTypes, MyPostsListType} from "../../../redux/stateTypes";
-import {addPostActionCreator, changeNewPostActionCreator} from "../../../redux/profile-reducer";
+import MessageInputBlock from "../../UI/MessageInput/MessageInputBlock";
+import {PostBlockPropsTypes} from './PostBlockContainer';
 
 
 import './PostBlock.scss';
-import MessageInputBlock from "../../UI/MessageInput/MessageInputBlock";
 
-
-type PostBlockPropsTypes = {
-	addPost: () => void
-	changeTextAction: (text: string) => void
-	myPostsList: MyPostsListType
-	newTextPost: string
-}
 
 const PostBLock: React.FC<PostBlockPropsTypes> = ({myPostsList, newTextPost, ...props}) => {
   return (

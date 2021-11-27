@@ -10,7 +10,10 @@ import settingsIcon from '../../images/settings_24.svg'
 import sidebarAvatar from '../../images/ava.jpg'
 
 import './SideBar.scss';
-import {StoreContext} from '../../StoreContext';
+import {connect} from "react-redux";
+import {AppStateType} from "../../redux/redux-store";
+import {Dispatch} from "redux";
+import {FriendsListType} from "../../redux/storeTypes";
 
 type SideBarPropsTypes = {
 	// state: SideBarType
@@ -57,15 +60,32 @@ const SideBar: React.FC<SideBarPropsTypes> = (props) => {
 				</li>
 			</ul>
 
-			<StoreContext.Consumer children={
-				(store) => {
-					return (
-						<FriendsBlock friends={store.getState().sideBar.friendsList}/>
-					)
-				}
-			}/>
+			<FriendsBlockContainer/>
 		</nav>
 	);
 };
+
+export type FriendsBlockPropsTypes = MapStateToPropsType & MapDispatchToPropsType
+
+type MapStateToPropsType = {
+	friends: FriendsListType
+}
+
+type MapDispatchToPropsType = {
+
+}
+
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+	return{
+		friends: state.sideBar.friendsList
+	}
+}
+
+const mapDispatchToState = (dispatch: Dispatch): MapDispatchToPropsType => {
+	return{
+	}
+}
+
+export const FriendsBlockContainer = connect(mapStateToProps, mapDispatchToState)(FriendsBlock)
 
 export default SideBar;

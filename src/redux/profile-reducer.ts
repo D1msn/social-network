@@ -1,4 +1,4 @@
-import {ActionsTypes, MyPostType, ProfilePageType} from "./stateTypes";
+import {ActionsTypes, MyPostType, ProfilePageType} from "./storeTypes";
 
 export const ADD_POST = "ADD-POST";
 export const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";
@@ -16,10 +16,9 @@ const initialState: ProfilePageType = {
 	newPostText: '',
 }
 
-type ProfileReducerType = (state: ProfilePageType, action: ActionsTypes) => ProfilePageType
+// type ProfileReducerType = (state: ProfilePageType, action: ActionsTypes) => ProfilePageType
 
-
-const profileReducer: ProfileReducerType = (state = initialState, action) => {
+const profileReducer = (state = initialState, action: ActionsTypes): ProfilePageType  => {
 
 	switch (action.type) {
 		case ADD_POST:

@@ -1,39 +1,43 @@
 import React from 'react';
-import Post from "./Post/Post";
-import {ActionsTypes, MyPostsListType, ProfilePageType, StoreType} from "../../../redux/stateTypes";
+import {connect} from "react-redux";
 import {addPostActionCreator, changeNewPostActionCreator} from "../../../redux/profile-reducer";
-
+import PostBLock from "./PostBlock";
+import {AppStateType} from "../../../redux/redux-store";
+import {MyPostsListType, MyPostType, ProfilePageType} from "../../../redux/storeTypes";
+import { Dispatch } from 'redux';
 
 import './PostBlock.scss';
-import MessageInputBlock from "../../UI/MessageInput/MessageInputBlock";
-import PostBLock from "./PostBlock";
-import { StoreContext } from '../../../StoreContext';
 
+export type PostBlockPropsTypes = MapStatePropsType & MapDispatchToProps
 
-type PostBlockPropsTypes = {
-	// store: StoreType
+type MapStatePropsType = {
+	myPostsList: MyPostsListType
+	newTextPost: string
 }
 
-const PostBLockContainer: React.FC<PostBlockPropsTypes> = (props) => {
+type MapDispatchToProps = {
+	changeTextAction: (text: string) => void
+	addPost: () => void
+}
 
-  return (
-	  <StoreContext.Consumer children={
-		  (store) => {
-			  const state: ProfilePageType = store.getState().profilePage
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
+	return {
+		myPostsList: state.profilePage.myPostsList,
+		newTextPost: state.profilePage.newPostText,
+	}
+}
 
-			  const addPost = () => {
-				  store.dispatch(addPostActionCreator())
-			  }
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
+	return {
+		changeTextAction: (text: string) => {
+			dispatch(changeNewPostActionCreator(text))
+		},
+		addPost: () => {
+			dispatch(addPostActionCreator())
+		},
+	}
+}
 
-			  const changeTextAction = (text: string) => {
-				  store.dispatch(changeNewPostActionCreator(text))
-			  }
-			  return (
-				  <PostBLock myPostsList={state.myPostsList} addPost={addPost} newTextPost={state.newPostText} changeTextAction={changeTextAction}/>
-			  )
-		  }
-	  }/>
-  );
-};
+const PostBLockContainer = connect(mapStateToProps,mapDispatchToProps)(PostBLock)
 
 export default PostBLockContainer;

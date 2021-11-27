@@ -1,4 +1,4 @@
-import {ActionsTypes, MessageType, MyPostType, StoreType} from "./stateTypes";
+import {ActionsTypes, MessageType, MyPostType, StoreType} from "./storeTypes";
 import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 
@@ -19,7 +19,7 @@ export const OldStore: StoreType = {
 
 		dialogsPage: {
 			dialogsList: [
-				{id: "1", name: "Дима", avatar: "http://lorempixel.com/150/450/"},
+				{id: "1", name: "Дима", avatar: "http://via.placeholder.com/300"},
 				{id: "2", name: "Игорь", avatar: "http://lorempixel.com/650/450/"},
 				{id: "3", name: "Олег", avatar: "http://lorempixel.com/450/450/"},
 				{id: "4", name: "Гена", avatar: "http://lorempixel.com/550/450/"},
@@ -41,7 +41,7 @@ export const OldStore: StoreType = {
 
 		sideBar: {
 			friendsList: [
-				{id: "1", name: "Дима", avatar: "http://lorempixel.com/150/450/"},
+				{id: "1", name: "Дима", avatar: "http://via.placeholder.com/300"},
 				{id: "2", name: "Игорь", avatar: "http://lorempixel.com/650/450/"},
 				{id: "3", name: "Олег", avatar: "http://lorempixel.com/450/450/"},
 			]
