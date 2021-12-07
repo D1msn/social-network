@@ -3,62 +3,111 @@
 @import './variables.scss';
 
 * {
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    box-sizing: border-box;
-}
-body{
-    height: 100%;
-    background-color: #2b358c0a;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
-ul{
-    list-style: none;
+body {
+  height: 100%;
+  background-color: #2b358c0a;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+ul {
+  list-style: none;
 }
 
 a {
-    color: inherit;
+  color: inherit;
 }
-._container{
-    max-width: 1470px;
-    margin: 0 auto;
-    padding:  0 15px;
+
+._container {
+  max-width: 1470px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 .app-wrapper {
-    width: 100%;
-    min-height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .main {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+
+  &__content {
+    margin-left: $sidebarWidth;
     width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    flex: 1 1 auto;
+    margin-top: 60px;
 
-    &__content {
-        margin-left: $sidebarWidth;
-        width: 100%;
-        margin-top: 60px;
-
-    }
+  }
 }
 
 .profile-avatar {
+  display: flex;
+  align-self: center;
+
+  img {
+    box-shadow: 0px 0px 0px 2px #9b4742e0;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.follow-btn {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #f8e5e3;
+  color: #cd1313;
+  padding: 5px;
+  border-radius: 9px;
+  transition: 0.3s all ease;
+  //box-shadow: inset 1px -1px 1px 2px #d7b3b075;
+
+  div{
     display: flex;
-    align-self: center;
-    img {
-        box-shadow: 0px 0px 0px 2px #9b4742e0;
-        border-radius: 50%;
-        object-fit: cover;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:active{
+    transform: scale(0.9);
+  }
+
+  &.active{
+    box-shadow: inset 1px -1px 1px 2px #d7b3b075;
+    background-color: #f9f4f3;
+  }
+
+  svg{
+    path{
+      transition: 0.3s all ease;
     }
+  }
+
+  &:hover{
+
+    svg {
+      path {
+        fill: #cd131385;
+      }
+    }
+  }
 }
 
 

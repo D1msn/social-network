@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Profile from "./components/Profile/Profile";
 import SideBar from "./components/SideBar/SideBar";
+import UsersContainer from './components/UsersPage/UsersContainer';
 
 import './App.scss';
 
@@ -24,6 +25,7 @@ const App: React.FC<AppTypes> = (props) => {
 						<div className={"main__content"}>
 							<Route path={"/profile"} render={() => <Profile />}/>
 							<Route path={"/dialogs"} render={() => <DialogsContainer />}/>
+							<Route path={"/users"} render={() => <UsersContainer />}/>
 						</div>
 					</div>
 					<Footer/>

@@ -8,6 +8,7 @@ import newsIcon from '../../images/choose_type-public.svg'
 import musicIcon from '../../images/volume-up.svg'
 import settingsIcon from '../../images/settings_24.svg'
 import sidebarAvatar from '../../images/ava.jpg'
+import usersIcon from '../../images/users.svg'
 
 import './SideBar.scss';
 import {connect} from "react-redux";
@@ -32,7 +33,7 @@ const SideBar: React.FC<SideBarPropsTypes> = (props) => {
 				<li className="sidebar__item">
 					<NavLink to="/profile" className="sidebar__link">
 						<ReactSVG src={profileIcon} className="sidebar__item-icon"/>
-						Profile
+						My profile
 					</NavLink>
 				</li>
 				<li className="sidebar__item">
@@ -46,6 +47,12 @@ const SideBar: React.FC<SideBarPropsTypes> = (props) => {
 						<ReactSVG src={newsIcon} className="sidebar__item-icon"/>
 						News
 					</NavLink></li>
+				<li className="sidebar__item">
+					<NavLink to="/users" className="sidebar__link">
+						<ReactSVG src={usersIcon} className="sidebar__item-icon"/>
+						Users
+					</NavLink>
+				</li>
 				<li className="sidebar__item">
 					<NavLink to="/music" className="sidebar__link">
 						<ReactSVG src={musicIcon} className="sidebar__item-icon"/>

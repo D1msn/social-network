@@ -57,6 +57,23 @@ export type SideBarType = {
 	friendsList: FriendsListType
 }
 
+export type UserCatalogType = {
+	id: string,
+	followed: boolean,
+	photoUrl: string,
+	firstName: string,
+	lastName: string,
+	middleName: string,
+	status: string,
+	location: {
+		country: string,
+		city: string
+	}
+}
+export type UsersCatalogType = {
+	users: UserCatalogType[]
+}
+
 export type DialogsListType = DialogType[];
 export type MessagesListType = MessageType[];
 export type FriendsListType = FriendType[];
