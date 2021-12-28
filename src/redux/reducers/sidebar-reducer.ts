@@ -1,4 +1,4 @@
-import {ActionsTypes, MyPostType, ProfilePageType, SideBarType} from "./storeTypes";
+import {ActionsTypes, MyPostType, ProfilePageType, SideBarType} from "../storeTypes";
 
 
 const initialState: SideBarType = {

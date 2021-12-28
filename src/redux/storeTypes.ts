@@ -1,5 +1,5 @@
-import {addPostActionCreator, changeNewPostActionCreator} from "./profile-reducer";
-import {addMessageActionCreator, changeNewMessageActionCreator} from "./dialogs-reducer";
+import {addPostActionCreator, changeNewPostActionCreator} from "./reducers/profile-reducer";
+import {addMessageActionCreator, changeNewMessageActionCreator} from "./reducers/dialogs-reducer";
 
 
 export type StoreType = {
@@ -58,10 +58,13 @@ export type SideBarType = {
 }
 
 export type UserCatalogType = {
-	id: string,
+	id: number,
 	followed: boolean,
-	photoUrl: string,
-	firstName: string,
+	photos: {
+		large: string
+		small: string
+	}
+	name: string,
 	lastName: string,
 	middleName: string,
 	status: string,

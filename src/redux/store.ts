@@ -1,6 +1,6 @@
 import {ActionsTypes, MessageType, MyPostType, StoreType} from "./storeTypes";
-import profileReducer from "./profile-reducer";
-import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./reducers/profile-reducer";
+import dialogsReducer from "./reducers/dialogs-reducer";
 
 export const OldStore: StoreType = {
 	_state: {

@@ -1,4 +1,4 @@
-import {ActionsTypes, DialogsPageType, MessageType} from "./storeTypes";
+import {ActionsTypes, DialogsPageType, MessageType} from "../storeTypes";
 
 export const ADD_MESSAGE = "ADD-MESSAGE";
 export const CHANGE_NEW_MESSAGE_TEXT = "CHANGE-NEW-MESSAGE-TEXT";

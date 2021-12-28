@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {addPostActionCreator, changeNewPostActionCreator} from "../../../redux/profile-reducer";
+import {addPostActionCreator, changeNewPostActionCreator} from "../../../redux/reducers/profile-reducer";
 import PostBLock from "./PostBlock";
 import {AppStateType} from "../../../redux/redux-store";
-import {MyPostsListType, MyPostType, ProfilePageType} from "../../../redux/storeTypes";
-import { Dispatch } from 'redux';
+import {MyPostsListType} from "../../../redux/storeTypes";
+import {Dispatch} from 'redux';
 
 import './PostBlock.scss';
 

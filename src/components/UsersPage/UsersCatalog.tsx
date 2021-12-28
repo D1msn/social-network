@@ -1,81 +1,17 @@
 import React, {FC, useEffect} from 'react';
 import UserAddIcon from '../../images/user-plus.svg'
 import UserRemoveIcon from '../../images/user-minus.svg'
+import axios from 'axios';
 
 import './UsersCatalog.scss'
 import {ReactSVG} from "react-svg";
 import {UsersCatalogPropsType} from "./UsersContainer";
+import avatarImg from '../../images/avatar.png'
 
 const UsersCatalog: FC<UsersCatalogPropsType> = ({users, followUser, unFollowUser, fetchUsers}) => {
 
 	useEffect(() => {
-		fetchUsers([
-			{
-				id: "1",
-				followed: false,
-				photoUrl: "https://shapka-youtube.ru/wp-content/uploads/2021/02/avatarka-dlya-skaypa-dlya-parney.jpg",
-				firstName: "Dmitry",
-				lastName: "Volkov",
-				middleName: "",
-				status: "Doma",
-				location: {
-					country: "Russia",
-					city: "Kaluga"
-				}
-			},
-			{
-				id: "2",
-				followed: true,
-				photoUrl: "https://shapka-youtube.ru/wp-content/uploads/2021/02/avatarka-dlya-skaypa-dlya-parney.jpg",
-				firstName: "Ivan",
-				lastName: "Dada",
-				middleName: "",
-				status: "Doma2",
-				location: {
-					country: "Russia",
-					city: "Kaluga"
-				}
-			},
-			{
-				id: "3",
-				followed: false,
-				photoUrl: "https://shapka-youtube.ru/wp-content/uploads/2021/02/avatarka-dlya-skaypa-dlya-parney.jpg",
-				firstName: "Igor",
-				lastName: "Neigor",
-				middleName: "",
-				status: "Doma3",
-				location: {
-					country: "Russia",
-					city: "Kaluga"
-				}
-			},
-			{
-				id: "4",
-				followed: false,
-				photoUrl: "https://shapka-youtube.ru/wp-content/uploads/2021/02/avatarka-dlya-skaypa-dlya-parney.jpg",
-				firstName: "Ivan",
-				lastName: "Dada",
-				middleName: "",
-				status: "Doma2",
-				location: {
-					country: "Russia",
-					city: "Kaluga"
-				}
-			},
-			{
-				id: "5",
-				followed: true,
-				photoUrl: "https://shapka-youtube.ru/wp-content/uploads/2021/02/avatarka-dlya-skaypa-dlya-parney.jpg",
-				firstName: "Igor",
-				lastName: "Neigor",
-				middleName: "",
-				status: "Doma3",
-				location: {
-					country: "Russia",
-					city: "Kaluga"
-				}
-			}
-		])
+		axios.get("https://social-network.samuraijs.com/api/1.0/users").then(res => fetchUsers(res.data.items))
 	}, [])
 
 	return (
@@ -83,16 +19,16 @@ const UsersCatalog: FC<UsersCatalogPropsType> = ({users, followUser, unFollowUse
 			<div className="users-catalog__wrapper">
 				<ul className="users-catalog__list">
 					{users.map(u => (
-						<li className="users-catalog__item users-catalog-item">
+						<li key={u.id} className="users-catalog__item users-catalog-item">
 							<div className="users-catalog-item__side">
 								<div className="users-catalog-item__avatar">
-									<img src={u.photoUrl} alt="AVATAR"/>
+									<img src={u.photos.small || avatarImg} alt="AVATAR"/>
 								</div>
 							</div>
 							<div className="users-catalog-item__main">
 								<div className="users-catalog-item__info">
 									<p className="users-catalog-item__name">
-										{u.firstName} {u.lastName}
+										{u.name}
 									</p>
 									<p className="users-catalog-item__status">
 										{u.status}

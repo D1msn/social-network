@@ -32,6 +32,6 @@ type unFollowUserActionType = ReturnType<typeof unFollowUserAC>
 type fetchUsersActionType = ReturnType<typeof fetchUsersAC>
 
 
-export const followUserAC = (userId: string) => ({type: usersCatalogActions.FOLLOW, userId} as const)
-export const unFollowUserAC = (userId: string) => ({type: usersCatalogActions.UN_FOLLOW, userId} as const)
+export const followUserAC = (userId: number) => ({type: usersCatalogActions.FOLLOW, userId} as const)
+export const unFollowUserAC = (userId: number) => ({type: usersCatalogActions.UN_FOLLOW, userId} as const)
 export const fetchUsersAC = (users: UserCatalogType[]) => ({type: usersCatalogActions.FETCH_USERS, users} as const)
