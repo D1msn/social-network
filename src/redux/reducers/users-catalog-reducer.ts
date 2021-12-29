@@ -36,15 +36,15 @@ export const usersCatalogReducer = (state = initialState, action: usersCatalogAc
 
 type usersCatalogActionsTypes = followUserActionType | unFollowUserActionType | fetchUsersActionType | setCurrentPageActionType | setTotalCountActionType
 
-type followUserActionType = ReturnType<typeof followUserAC>
-type unFollowUserActionType = ReturnType<typeof unFollowUserAC>
-type fetchUsersActionType = ReturnType<typeof fetchUsersAC>
-type setCurrentPageActionType = ReturnType<typeof setCurrentPageAC>
-type setTotalCountActionType = ReturnType<typeof setTotalUsersCountAC>
+type followUserActionType = ReturnType<typeof followUser>
+type unFollowUserActionType = ReturnType<typeof unFollowUser>
+type fetchUsersActionType = ReturnType<typeof fetchUsers>
+type setCurrentPageActionType = ReturnType<typeof setCurrentPage>
+type setTotalCountActionType = ReturnType<typeof setTotalUsersCount>
 
 
-export const followUserAC = (userId: number) => ({type: usersCatalogActions.FOLLOW, userId} as const)
-export const unFollowUserAC = (userId: number) => ({type: usersCatalogActions.UN_FOLLOW, userId} as const)
-export const fetchUsersAC = (users: UserCatalogType[]) => ({type: usersCatalogActions.FETCH_USERS, users} as const)
-export const setCurrentPageAC = (currentPage: number) => ({type: usersCatalogActions.SET_CURRENT_PAGE, currentPage} as const)
-export const setTotalUsersCountAC = (totalUsersCount: number) => ({type: usersCatalogActions.SET_TOTAL_USERS_COUNT, totalUsersCount} as const)
+export const followUser = (userId: number) => ({type: usersCatalogActions.FOLLOW, userId} as const)
+export const unFollowUser = (userId: number) => ({type: usersCatalogActions.UN_FOLLOW, userId} as const)
+export const fetchUsers = (users: UserCatalogType[]) => ({type: usersCatalogActions.FETCH_USERS, users} as const)
+export const setCurrentPage = (currentPage: number) => ({type: usersCatalogActions.SET_CURRENT_PAGE, currentPage} as const)
+export const setTotalUsersCount = (totalUsersCount: number) => ({type: usersCatalogActions.SET_TOTAL_USERS_COUNT, totalUsersCount} as const)

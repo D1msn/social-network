@@ -11,17 +11,25 @@ import PaginatorPages from "../UI/PaginatorPages/PaginatorPages";
 
 type StateType = {
 	// описываем локальный стейт
-	id: string
+	error: boolean
 }
 
 
 class UsersCatalog extends React.Component<UsersCatalogPropsType, StateType> {
+	constructor(props: UsersCatalogPropsType) {
+		super(props);
+		this.state = {error: false}
+	}
+
+
 	componentDidMount() {
-		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.setCurrentPage}&count=${this.props.pageSize}`)
+		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
 			.then(res => {
 				this.props.fetchUsers(res.data.items)
 				this.props.setTotalUsersCount(res.data.totalCount)
-			})
+			}).catch((err) => {
+				this.setState({error: true})
+		})
 	}
 
 	onPageChanged = (currentPage: number) => {
@@ -32,10 +40,9 @@ class UsersCatalog extends React.Component<UsersCatalogPropsType, StateType> {
 
 	render() {
 		const pageCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
-		const pages = []
 
-		for (let i = 1; i <= pageCount; i++) {
-			pages.push(i)
+		if(this.state.error){
+			return <div>Что то пошло не так</div>
 		}
 
 		return (
