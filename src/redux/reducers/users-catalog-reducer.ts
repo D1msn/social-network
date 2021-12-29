@@ -12,7 +12,7 @@ export enum usersCatalogActions {
 const initialState: UsersCatalogType = {
 	users: [],
 	totalUsersCount: 0,
-	pageSize: 20,
+	pageSize: 6,
 	currentPage: 1,
 }
 

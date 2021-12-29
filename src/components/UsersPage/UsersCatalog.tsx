@@ -7,7 +7,7 @@ import './UsersCatalog.scss'
 import {ReactSVG} from "react-svg";
 import {UsersCatalogPropsType} from "./UsersContainer";
 import avatarImg from '../../images/avatar.png'
-import Pagination from "../UI/Pagination";
+import PaginatorPages from "../UI/PaginatorPages/PaginatorPages";
 
 type StateType = {
 	// описываем локальный стейт
@@ -31,14 +31,16 @@ class UsersCatalog extends React.Component<UsersCatalogPropsType, StateType> {
 	}
 
 	render() {
+		const pageCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+		const pages = []
+
+		for (let i = 1; i <= pageCount; i++) {
+			pages.push(i)
+		}
+
 		return (
 			<div className={"users-catalog"}>
-				<Pagination
-					onPageChanged={this.onPageChanged}
-					totalUsersCount={this.props.totalUsersCount}
-					pageSize={this.props.pageSize}
-					currentPage={this.props.currentPage}
-				/>
+				<PaginatorPages totalPages={pageCount} currentPage={this.props.currentPage} setActivePage={this.onPageChanged}/>
 				<div className="users-catalog__wrapper">
 					<ul className="users-catalog__list">
 						{this.props.users.map(u => (
