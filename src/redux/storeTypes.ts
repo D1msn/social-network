@@ -75,6 +75,9 @@ export type UserCatalogType = {
 }
 export type UsersCatalogType = {
 	users: UserCatalogType[]
+	totalUsersCount: number
+	pageSize: number
+	currentPage: number
 }
 
 export type DialogsListType = DialogType[];
