@@ -1,4 +1,4 @@
-import {ActionsTypes, MessageType, MyPostType, StoreType} from "./storeTypes";
+import {StoreType} from "./storeTypes";
 import profileReducer from "./reducers/profile-reducer";
 import dialogsReducer from "./reducers/dialogs-reducer";
 
@@ -15,6 +15,7 @@ export const OldStore: StoreType = {
 				{id: "7", postMessage: "последнее мое", likesCount: 1111},
 			],
 			newPostText: '',
+			profileInfo: null,
 		},
 
 		dialogsPage: {
@@ -58,7 +59,7 @@ export const OldStore: StoreType = {
 	getState(){
 		return this._state
 	},
-	dispatch(action: ActionsTypes){
+	dispatch(action: any){
 		this._state.profilePage = profileReducer(this._state.profilePage, action);
 		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 		this._callSubscriber()

@@ -1,7 +1,8 @@
-import {ActionsTypes, MyPostType, ProfilePageType} from "../storeTypes";
+import {MyPostType, ProfileActionsTypes, ProfileInfoType, ProfilePageType} from "../storeTypes";
 
 export const ADD_POST = "ADD-POST";
 export const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";
+export const SET_USER_PROFILE_INFO = "SET-USER-PROFILE-INFO";
 
 const initialState: ProfilePageType = {
 	myPostsList: [
@@ -14,11 +15,10 @@ const initialState: ProfilePageType = {
 		{id: "7", postMessage: "последнее мое", likesCount: 1111},
 	],
 	newPostText: '',
+	profileInfo: null,
 }
 
-// type ProfileReducerType = (state: ProfilePageType, action: ActionsTypes) => ProfilePageType
-
-const profileReducer = (state = initialState, action: ActionsTypes): ProfilePageType  => {
+const profileReducer = (state = initialState, action: ProfileActionsTypes): ProfilePageType  => {
 
 	switch (action.type) {
 		case ADD_POST:
@@ -30,6 +30,8 @@ const profileReducer = (state = initialState, action: ActionsTypes): ProfilePage
 			return state
 		case CHANGE_NEW_POST_TEXT:
 			return {...state, newPostText: action.newText}
+		case SET_USER_PROFILE_INFO:
+			return {...state, profileInfo: action.profileInfo}
 		default:
 			return state
 	}
@@ -38,5 +40,6 @@ const profileReducer = (state = initialState, action: ActionsTypes): ProfilePage
 
 export const addPostActionCreator = () => ({type: ADD_POST} as const)
 export const changeNewPostActionCreator = (newText: string) => ({type: CHANGE_NEW_POST_TEXT, newText } as const)
+export const setUserProfileInfo = (profileInfo: ProfileInfoType) => ({type: SET_USER_PROFILE_INFO, profileInfo } as const)
 
 export default profileReducer;

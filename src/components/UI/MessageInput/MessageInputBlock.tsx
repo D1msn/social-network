@@ -1,7 +1,5 @@
 import React from 'react';
-import {ActionsTypes} from "../../../redux/storeTypes";
 import MyInput from "../MyInput";
-import {changeNewPostActionCreator} from "../../../redux/reducers/profile-reducer";
 
 import './MessageInputBlock.scss';
 

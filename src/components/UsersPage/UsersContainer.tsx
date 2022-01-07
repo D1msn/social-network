@@ -6,7 +6,7 @@ import {
 	fetchUsers,
 	followUser,
 	setCurrentPage,
-	setTotalUsersCount,
+	setTotalUsersCount, toggleIsLoading,
 	unFollowUser
 } from "../../redux/reducers/users-catalog-reducer";
 
@@ -20,6 +20,7 @@ type MapDispatchToPropsType = {
 	fetchUsers: (users: UserCatalogType[]) => void
 	setCurrentPage: (currentPage: number) => void
 	setTotalUsersCount: (totalCount: number) => void
+	toggleIsLoading: (isLoading: boolean) => void
 }
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
@@ -28,6 +29,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 		totalUsersCount: state.usersCatalog.totalUsersCount,
 		pageSize: state.usersCatalog.pageSize,
 		currentPage: state.usersCatalog.currentPage,
+		isLoading: state.usersCatalog.isLoading,
 	}
 }
 // const mapDispatchToState = (dispatch: Dispatch): MapDispatchToPropsType => {
@@ -56,6 +58,8 @@ const UsersContainer = connect(mapStateToProps,{
 	fetchUsers,
 	setCurrentPage,
 	setTotalUsersCount,
+	toggleIsLoading,
+
 })(UsersCatalog)
 
 export default UsersContainer;

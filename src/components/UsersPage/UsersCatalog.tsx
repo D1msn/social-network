@@ -8,6 +8,8 @@ import {ReactSVG} from "react-svg";
 import {UsersCatalogPropsType} from "./UsersContainer";
 import avatarImg from '../../images/avatar.png'
 import PaginatorPages from "../UI/PaginatorPages/PaginatorPages";
+import { NavLink } from 'react-router-dom';
+import {Loader} from "../common/Loader";
 
 type StateType = {
 	// описываем локальный стейт
@@ -23,19 +25,28 @@ class UsersCatalog extends React.Component<UsersCatalogPropsType, StateType> {
 
 
 	componentDidMount() {
+		this.props.toggleIsLoading(true)
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
 			.then(res => {
 				this.props.fetchUsers(res.data.items)
 				this.props.setTotalUsersCount(res.data.totalCount)
-			}).catch((err) => {
+			})
+			.catch((err) => {
 				this.setState({error: true})
-		})
+			})
+			.finally(() => {
+				this.props.toggleIsLoading(false)
+			})
 	}
 
 	onPageChanged = (currentPage: number) => {
 		this.props.setCurrentPage(currentPage)
+		this.props.toggleIsLoading(true)
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`)
 			.then(res => this.props.fetchUsers(res.data.items))
+			.finally(() => {
+				this.props.toggleIsLoading(false)
+			})
 	}
 
 	render() {
@@ -43,6 +54,16 @@ class UsersCatalog extends React.Component<UsersCatalogPropsType, StateType> {
 
 		if(this.state.error){
 			return <div>Что то пошло не так</div>
+		}
+
+		if(this.props.isLoading){
+			return (
+				<div className={"users-catalog"}>
+					<div className="users-catalog__wrapper">
+						<Loader/>
+					</div>
+				</div>
+			)
 		}
 
 		return (
@@ -53,9 +74,9 @@ class UsersCatalog extends React.Component<UsersCatalogPropsType, StateType> {
 						{this.props.users.map(u => (
 							<li key={u.id} className="users-catalog__item users-catalog-item">
 								<div className="users-catalog-item__side">
-									<div className="users-catalog-item__avatar">
+									<NavLink to={`/profile/${u.id}`} className="users-catalog-item__avatar">
 										<img src={u.photos.small || avatarImg} alt="AVATAR"/>
-									</div>
+									</NavLink>
 								</div>
 								<div className="users-catalog-item__main">
 									<div className="users-catalog-item__info">

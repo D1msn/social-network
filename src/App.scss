@@ -117,5 +117,10 @@ a {
   justify-content: center;
 }
 
-
+.loader{
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
 

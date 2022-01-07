@@ -1,4 +1,4 @@
-import {ActionsTypes, DialogsPageType, MessageType} from "../storeTypes";
+import {DialogsActionsTypes, DialogsPageType, MessageType} from "../storeTypes";
 
 export const ADD_MESSAGE = "ADD-MESSAGE";
 export const CHANGE_NEW_MESSAGE_TEXT = "CHANGE-NEW-MESSAGE-TEXT";
@@ -53,9 +53,7 @@ const initialState: DialogsPageType = {
 	newMessagesText: ''
 }
 
-// type DialogsReducerType = (state: DialogsPageType, action: ActionsTypes) => DialogsPageType
-
-const dialogsReducer = (state = initialState, action: ActionsTypes): DialogsPageType => {
+const dialogsReducer = (state = initialState, action: DialogsActionsTypes): DialogsPageType => {
 	switch (action.type) {
 		case ADD_MESSAGE:
 			if (state.newMessagesText.length > 0) {

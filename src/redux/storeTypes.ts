@@ -1,4 +1,4 @@
-import {addPostActionCreator, changeNewPostActionCreator} from "./reducers/profile-reducer";
+import {addPostActionCreator, changeNewPostActionCreator, setUserProfileInfo} from "./reducers/profile-reducer";
 import {addMessageActionCreator, changeNewMessageActionCreator} from "./reducers/dialogs-reducer";
 
 
@@ -10,10 +10,17 @@ export type StoreType = {
 	dispatch: (action: ActionsTypes) => void
 }
 
-export type ActionsTypes =
+export type ActionsTypes = ProfileActionsTypes | DialogsActionsTypes | SidebarActionsTypes
+
+export type ProfileActionsTypes =
 	ReturnType<typeof addPostActionCreator>
-	| ReturnType<typeof addMessageActionCreator>
 	| ReturnType<typeof changeNewPostActionCreator>
+	| ReturnType<typeof setUserProfileInfo>
+
+export type SidebarActionsTypes = {}
+
+export type DialogsActionsTypes =
+	ReturnType<typeof addMessageActionCreator>
 	| ReturnType<typeof changeNewMessageActionCreator>
 
 
@@ -44,10 +51,42 @@ export type FriendType = {
 	avatar: string
 }
 
+// --------PROFILE
+
 export type ProfilePageType = {
 	myPostsList: MyPostsListType
 	newPostText: string
+	profileInfo: ProfileInfoType | null
 }
+
+export type ProfileInfoType = {
+	aboutMe: string;
+	contacts: ProfileInfoContactsType;
+	lookingForAJob: boolean;
+	lookingForAJobDescription: string;
+	fullName: string;
+	userId: number;
+	photos: ProfileInfoPhotosType;
+}
+
+export type ProfileInfoContactsType = {
+	facebook: string;
+	website: string;
+	vk: string;
+	twitter: string;
+	instagram: string;
+	youtube: string;
+	github: string;
+	mainLink: string;
+}
+
+export type ProfileInfoPhotosType = {
+	small: string;
+	large: string;
+}
+
+
+//----PROFILE
 export type DialogsPageType = {
 	messagesList: MessagesListType
 	dialogsList: DialogsListType
@@ -78,6 +117,7 @@ export type UsersCatalogType = {
 	totalUsersCount: number
 	pageSize: number
 	currentPage: number
+	isLoading: boolean
 }
 
 export type DialogsListType = DialogType[];

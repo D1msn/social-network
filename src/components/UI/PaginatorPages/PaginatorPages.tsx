@@ -71,7 +71,7 @@ const PaginatorPages = ({ totalPages, currentPage, setActivePage }: PaginationPa
 							{item.value}
 						</li>
 					)
-					: <PaginatorMoreItem item={item} setActivePage={setActivePage} />
+					: <PaginatorMoreItem key={item.id} item={item} setActivePage={setActivePage} />
 
 			))}
 			<li className={`pagination__item ${currentPage === totalPages || !totalPages ? 'pagination__item--disabled' : ''}`}
